@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/space8dp"
+    android:paddingLeft="@dimen/space8dp"
+    android:paddingRight="@dimen/space8dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.thiengo.laranjeirasguiacomercial.LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLength="100"
+            android:maxLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/til_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_entrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/til_password"
+        android:layout_marginTop="5dp"
+        android:background="#82b73f"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp"
+        android:text="Entrar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_ou"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_entrar"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="ou"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/bt_facebook_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_ou"
+        android:background="#4665ac"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp"
+        android:text="Entrar com Facebook"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_below="@id/bt_facebook_login"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/vi_horizontal"
+        android:background="#ccc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/tv_cadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vi_horizontal"
+        android:text="Ainda não tem conta? CADASTRE-SE"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_recuperar_acesso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_cadastro"
+        android:layout_marginTop="5dp"
+        android:textColor="#1193f5"
+        android:text="Esqueci a senha"
+        android:textSize="16dp" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_academia"
+            android:icon="@drawable/ic_academia"
+            android:title="Academias" />
+        <item
+            android:id="@+id/nav_administracao_de_imoveis"
+            android:icon="@drawable/ic_administracao_de_imoveis"
+            android:title="Administração de imóveis" />
+        <item
+            android:id="@+id/nav_bares_e_boutequins"
+            android:icon="@drawable/ic_bares_e_boutequins"
+            android:title="Bares e boutequins" />
+        <item
+            android:id="@+id/nav_bijouterias_e_acessorios"
+            android:icon="@drawable/ic_bijouterias_e_acessorios"
+            android:title="Bijouterias e acessórios" />
+        <item
+            android:id="@+id/nav_brinquedos"
+            android:icon="@drawable/ic_brinquedos"
+            android:title="Brinquedos" />
+        <item
+            android:id="@+id/nav_calcados"
+            android:icon="@drawable/ic_calcados"
+            android:title="Calçados" />
+        <item
+            android:id="@+id/nav_cerimonial"
+            android:icon="@drawable/ic_cerimonial"
+            android:title="Cerimonial" />
+        <item
+            android:id="@+id/nav_chaveiros"
+            android:icon="@drawable/ic_chaveiros"
+            android:title="Chaveiros" />
+        <item
+            android:id="@+id/nav_dentistas"
+            android:icon="@drawable/ic_dentistas"
+            android:title="Dentistas" />
+        <item
+            android:id="@+id/nav_escolas_de_idiomas"
+            android:icon="@drawable/ic_escolas_de_idiomas"
+            android:title="Escolas de idiomas" />
+        <item
+            android:id="@+id/nav_pet_shop"
+            android:icon="@drawable/ic_pet_shop"
+            android:title="Pet shop" />
+        <item
+            android:id="@+id/nav_taxi"
+            android:icon="@drawable/ic_taxi"
+            android:title="Taxi" />
+    </group>
+
+    <item android:title="Você e a APP Laranjeiras">
+        <menu>
+            <item
+                android:id="@+id/nav_contato"
+                android:title="Contato" />
+            <item
+                android:id="@+id/nav_sobre"
+                android:title="Sobre o APP" />
+        </menu>
+    </item>
+
+</menu>

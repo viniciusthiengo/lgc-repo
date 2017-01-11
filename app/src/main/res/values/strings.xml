@@ -9,7 +9,7 @@
 
     <string name="title_activity_sobre">Sobre o aplicativo</string>
     <string name="title_activity_login">Login</string>
-
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
+    <string name="title_activity_recuperar_acesso_passo_um">Recuperação de acesso - Passo 1</string>
+    <string name="title_activity_recuperar_acesso_passo_dois">Recuperação de acesso - Passo 2</string>
+    <string name="title_activity_cadastro">Cadastro</string>
 </resources>

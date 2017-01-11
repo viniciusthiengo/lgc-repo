@@ -34,7 +34,15 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RecuperarAcessoPassoUmActivity"
+            android:label="@string/title_activity_recuperar_acesso_passo_um"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CadastroActivity"
+            android:label="@string/title_activity_cadastro"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -65,7 +65,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/til_password"
         android:layout_marginTop="5dp"
-        android:background="#82b73f"
+        android:background="@drawable/botao_clique_estilo"
         android:paddingLeft="26dp"
         android:paddingRight="26dp"
         android:text="Entrar"
@@ -90,7 +90,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv_ou"
-        android:background="#4665ac"
+        android:background="@color/colorFacebookButton"
         android:paddingLeft="26dp"
         android:paddingRight="26dp"
         android:text="Entrar com Facebook"
@@ -111,16 +111,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/vi_horizontal"
-        android:text="Ainda não tem conta? CADASTRE-SE"
         android:textSize="16dp" />
 
     <TextView
+        android:onClick="acessarRecuperacaoAcesso"
         android:id="@+id/tv_recuperar_acesso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_cadastro"
         android:layout_marginTop="5dp"
-        android:textColor="#1193f5"
+        android:textColor="@color/colorLink"
         android:text="Esqueci a senha"
         android:textSize="16dp" />
 

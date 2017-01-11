@@ -3,4 +3,7 @@
     <color name="colorPrimary">#FF9800</color>
     <color name="colorPrimaryDark">#F57C00</color>
     <color name="colorAccent">#4CAF50</color>
+    <color name="colorLink">#1193f5</color>
+    <color name="colorActionButton">#82b73f</color>
+    <color name="colorFacebookButton">#4665ac</color>
 </resources>

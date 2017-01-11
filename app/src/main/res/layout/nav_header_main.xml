@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/header_button_style"
+        android:background="@drawable/header_botao_clique_estilo"
         android:onClick="acessarLoginActivity"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -63,7 +63,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/bt_login"
         android:layout_toRightOf="@+id/bt_login"
-        android:background="@drawable/header_button_style"
+        android:background="@drawable/header_botao_clique_estilo"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Cadastro" />

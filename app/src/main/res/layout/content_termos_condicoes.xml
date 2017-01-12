@@ -11,13 +11,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.thiengo.laranjeirasguiacomercial.SobreActivity"
-    tools:showIn="@layout/activity_sobre">
+    tools:context="br.com.thiengo.laranjeirasguiacomercial.TermosCondicoesActivity"
+    tools:showIn="@layout/activity_termos_condicoes">
 
     <TextView
-        android:id="@+id/tv_sobre"
+        android:id="@+id/tv_conteudo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp" />
-
 </ScrollView>

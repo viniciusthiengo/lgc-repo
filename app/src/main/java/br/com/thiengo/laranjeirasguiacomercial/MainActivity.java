@@ -90,7 +90,15 @@ public class MainActivity extends AppCompatActivity
 
 
     public void acessarLoginActivity(View view){
-        Intent intent = new Intent(this, LoginActivity.class);
+        invocaActivity( LoginActivity.class );
+    }
+
+    public void acessarCadastroActivity(View view){
+        invocaActivity( CadastroActivity.class );
+    }
+
+    private void invocaActivity( Class cls ){
+        Intent intent = new Intent(this, cls);
         startActivity( intent );
     }
 }

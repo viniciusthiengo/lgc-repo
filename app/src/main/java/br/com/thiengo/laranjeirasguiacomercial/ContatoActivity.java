@@ -45,8 +45,6 @@ public class ContatoActivity extends AppCompatActivity implements MaterialDialog
                 .positiveColorRes( R.color.colorLink )
                 .onPositive(this)
                 .show();
-
-
     }
 
     @Override

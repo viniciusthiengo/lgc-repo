@@ -64,6 +64,7 @@
         android:layout_toEndOf="@+id/bt_login"
         android:layout_toRightOf="@+id/bt_login"
         android:background="@drawable/header_botao_clique_estilo"
+        android:onClick="acessarCadastroActivity"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Cadastro" />

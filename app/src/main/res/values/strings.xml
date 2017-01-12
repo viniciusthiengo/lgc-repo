@@ -12,4 +12,5 @@
     <string name="title_activity_recuperar_acesso_passo_um">Recuperação de acesso - Passo 1</string>
     <string name="title_activity_recuperar_acesso_passo_dois">Recuperação de acesso - Passo 2</string>
     <string name="title_activity_cadastro">Cadastro</string>
+    <string name="title_activity_termos_condicoes">Termos e condições de uso</string>
 </resources>

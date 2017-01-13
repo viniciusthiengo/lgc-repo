@@ -6,4 +6,5 @@
     <color name="colorLink">#1193f5</color>
     <color name="colorActionButton">#82b73f</color>
     <color name="colorFacebookButton">#4665ac</color>
+    <color name="colorActivityBackground">#ffffff</color>
 </resources>

@@ -46,6 +46,10 @@
         <activity
             android:name=".TermosCondicoesActivity"
             android:label="@string/title_activity_termos_condicoes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ComercioActivity"
+            android:label="@string/title_activity_comercio"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

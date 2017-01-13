@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/iv_principal"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="Imagem comércio"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_perfil_padrao" />
+
+    <TextView
+        android:id="@+id/tv_nome_fantasia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@+id/iv_principal"
+        android:layout_toRightOf="@+id/iv_principal"
+        android:textColor="#333"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iv_localizacao"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/tv_nome_fantasia"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toEndOf="@+id/iv_principal"
+        android:layout_toRightOf="@+id/iv_principal"
+        android:contentDescription="Localização ícone"
+        android:src="@drawable/ic_localizacao" />
+
+    <TextView
+        android:id="@+id/tv_localizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nome_fantasia"
+        android:layout_toEndOf="@+id/iv_localizacao"
+        android:layout_toRightOf="@+id/iv_localizacao"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp" />
+
+
+    <ImageView
+        android:id="@+id/iv_estrela_1"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignLeft="@+id/iv_localizacao"
+        android:layout_alignStart="@+id/iv_localizacao"
+        android:layout_below="@+id/iv_localizacao"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_2"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_1"
+        android:layout_toRightOf="@+id/iv_estrela_1" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_3"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_2"
+        android:layout_toRightOf="@+id/iv_estrela_2" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_4"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_3"
+        android:layout_toRightOf="@+id/iv_estrela_3" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_4"
+        android:layout_toRightOf="@+id/iv_estrela_4" />
+
+    <TextView
+        android:id="@+id/tv_avaliacao_pontos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_localizacao"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/iv_estrela_5"
+        android:layout_toRightOf="@+id/iv_estrela_5"
+        android:paddingTop="4dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_avaliacao_qtd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_localizacao"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/tv_avaliacao_pontos"
+        android:layout_toRightOf="@+id/tv_avaliacao_pontos"
+        android:paddingTop="3dp"
+        android:textSize="15sp" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/iv_comentario_1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/iv_estrela_1"
+        android:layout_alignStart="@+id/iv_estrela_1"
+        android:layout_below="@+id/iv_estrela_1"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Imagem de perfil do usuário do último comentário"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_perfil_padrao"
+        app:civ_border_width="0dp"
+        app:civ_shadow="false" />
+
+    <TextView
+        android:id="@+id/tv_comentario_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_comentario_1"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/iv_comentario_1"
+        android:layout_toRightOf="@+id/iv_comentario_1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/iv_comentario_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/iv_comentario_1"
+        android:layout_alignStart="@+id/iv_comentario_1"
+        android:layout_below="@+id/iv_comentario_1"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Imagem de perfil do usuário do penúltimo comentário"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_perfil_padrao"
+        app:civ_border_width="0dp"
+        app:civ_shadow="false" />
+
+    <TextView
+        android:id="@+id/tv_comentario_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_comentario_2"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/iv_comentario_2"
+        android:layout_toRightOf="@+id/iv_comentario_2"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/iv_comentario_3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/iv_comentario_2"
+        android:layout_alignStart="@+id/iv_comentario_2"
+        android:layout_below="@+id/iv_comentario_2"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Imagem de perfil do usuário do penúltimo comentário"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_perfil_padrao"
+        app:civ_border_width="0dp"
+        app:civ_shadow="false" />
+
+    <TextView
+        android:id="@+id/tv_comentario_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_comentario_3"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/iv_comentario_3"
+        android:layout_toRightOf="@+id/iv_comentario_3"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp" />
+
+</RelativeLayout>

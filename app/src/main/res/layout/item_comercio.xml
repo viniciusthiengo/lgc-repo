@@ -27,8 +27,20 @@
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@+id/iv_principal"
         android:layout_toRightOf="@+id/iv_principal"
+        android:layout_toStartOf="@+id/iv_favorito"
+        android:layout_toLeftOf="@+id/iv_favorito"
         android:textColor="#333"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iv_favorito"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="Botão favorito"
+        android:src="@drawable/ic_nao_favorito" />
 
     <ImageView
         android:id="@+id/iv_localizacao"

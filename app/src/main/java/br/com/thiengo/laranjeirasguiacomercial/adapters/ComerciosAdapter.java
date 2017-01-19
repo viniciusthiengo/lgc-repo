@@ -2,6 +2,7 @@ package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivPrincipal;
+        ImageView ivFavorito;
         TextView tvNomeFantasia;
         TextView tvLocalizacao;
         TextView tvAvaliacaoPontos;
@@ -48,9 +50,8 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
         ViewHolder(View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(this);
-
             ivPrincipal = (ImageView) itemView.findViewById(R.id.iv_principal);
+            ivFavorito = (ImageView) itemView.findViewById(R.id.iv_favorito);
             tvNomeFantasia = (TextView) itemView.findViewById(R.id.tv_nome_fantasia);
             tvLocalizacao = (TextView) itemView.findViewById(R.id.tv_localizacao);
             tvAvaliacaoPontos = (TextView) itemView.findViewById(R.id.tv_avaliacao_pontos);
@@ -66,6 +67,9 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
             ivEstrela3 = (ImageView) itemView.findViewById(R.id.iv_estrela_3);
             ivEstrela4 = (ImageView) itemView.findViewById(R.id.iv_estrela_4);
             ivEstrela5 = (ImageView) itemView.findViewById(R.id.iv_estrela_5);
+
+            itemView.setOnClickListener(this);
+            ivFavorito.setOnClickListener(this);
         }
 
         private void setData( Comercio comercio ){
@@ -119,9 +123,24 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent( view.getContext(), ComercioActivity.class);
-            intent.putExtra( Comercio.COMERCIO_SELECIONADO_KEY, comercios.get( getAdapterPosition() ) );
-            view.getContext().startActivity( intent );
+            if( view.getId() == R.id.iv_favorito ){
+                ImageView iv = (ImageView)view;
+                Integer resourceId = (Integer) iv.getTag();
+
+                if( resourceId == null || resourceId == R.drawable.ic_nao_favorito ){
+                    resourceId = R.drawable.ic_favorito;
+                }
+                else{
+                    resourceId = R.drawable.ic_nao_favorito;
+                }
+                iv.setImageResource( resourceId );
+                iv.setTag( resourceId );
+            }
+            else{
+                Intent intent = new Intent( view.getContext(), ComercioActivity.class);
+                intent.putExtra( Comercio.COMERCIO_SELECIONADO_KEY, comercios.get( getAdapterPosition() ) );
+                view.getContext().startActivity( intent );
+            }
         }
     }
 

@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- CONTATO -->
         <ImageView
             android:id="@+id/iv_telefone"
             android:layout_width="20dp"
@@ -97,20 +98,8 @@
             android:textColor="@color/colorLink"
             android:textSize="18sp" />
 
-        <!-- TextView
-            android:id="@+id/tv_titulo_horario_funcionamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tv_site"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="26dp"
-            android:gravity="end"
-            android:text="Horário de funcionamento"
-            android:textSize="18sp" / -->
 
+        <!-- HORÁRIO DE FUNCIONAMENTO -->
         <TextView
             android:id="@+id/tv_titulo_horario_funcionamento"
             android:layout_width="match_parent"
@@ -158,6 +147,7 @@
         </android.support.v7.widget.CardView>
 
 
+        <!-- LOCALIZAÇÃO -->
         <TextView
             android:id="@+id/tv_titulo_localizacao"
             android:layout_width="match_parent"
@@ -222,6 +212,7 @@
         </android.support.v7.widget.CardView>
 
 
+        <!-- DESCRIÇÃO -->
         <TextView
             android:id="@+id/tv_titulo_descricao"
             android:layout_width="match_parent"
@@ -266,6 +257,298 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textSize="16sp" />
+        </android.support.v7.widget.CardView>
+
+
+        <!-- VÍDEO -->
+        <TextView
+            android:id="@+id/tv_titulo_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_descricao"
+            android:layout_marginTop="26dp"
+            android:layout_toLeftOf="@+id/iv_video"
+            android:layout_toStartOf="@+id/iv_video"
+            android:gravity="end"
+            android:text="Vídeo"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/cv_descricao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/ic_video_big_icone" />
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cv_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_titulo_video"
+            android:layout_margin="8dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            card_view:cardCornerRadius="2dp">
+
+            <fragment
+                android:id="@+id/ypv_video"
+                android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <!-- GALERIA IMAGENS -->
+        <TextView
+            android:id="@+id/tv_titulo_galeria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_video"
+            android:layout_marginTop="26dp"
+            android:layout_toLeftOf="@+id/iv_galeria"
+            android:layout_toStartOf="@+id/iv_galeria"
+            android:gravity="end"
+            android:text="Galeria"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_galeria"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/cv_video"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/ic_galeria" />
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cv_galeria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_titulo_galeria"
+            android:layout_margin="8dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            card_view:cardCornerRadius="2dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_galeria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.v7.widget.CardView>
+
+
+        <!-- COMPARTILHAMENTO -->
+        <TextView
+            android:id="@+id/tv_titulo_compartilhamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_galeria"
+            android:layout_marginTop="26dp"
+            android:layout_toLeftOf="@+id/iv_compartilhamento"
+            android:layout_toStartOf="@+id/iv_compartilhamento"
+            android:gravity="end"
+            android:text="Compartilhe"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_compartilhamento"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/cv_galeria"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/ic_compartilhar" />
+
+        <LinearLayout
+            android:id="@+id/ll_compartilhamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_titulo_compartilhamento"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="18dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_compartilhamento_whatsapp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Compartilhar no WhatsApp"
+                    android:onClick="compartilhar"
+                    android:src="@drawable/ic_whatsapp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_compartilhamento_facebook"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Compartilhar no Facebook"
+                    android:onClick="compartilhar"
+                    android:src="@drawable/ic_facebook" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_compartilhamento_instagram"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Compartilhar no Instagram"
+                    android:onClick="compartilhar"
+                    android:src="@drawable/ic_instagram" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_compartilhamento_twitter"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Compartilhar no twitter"
+                    android:onClick="compartilhar"
+                    android:src="@drawable/ic_twitter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_compartilhamento_google"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Compartilhar no Google+"
+                    android:onClick="compartilhar"
+                    android:src="@drawable/ic_google_plus" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- NOTIFICAÇÃO -->
+        <TextView
+            android:id="@+id/tv_titulo_notificacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_compartilhamento"
+            android:layout_marginTop="26dp"
+            android:layout_toLeftOf="@+id/iv_notificacao"
+            android:layout_toStartOf="@+id/iv_notificacao"
+            android:gravity="end"
+            android:text="Se manter atualizado(a)"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_notificacao"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ll_compartilhamento"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/ic_notificacao_big_icone" />
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cv_notificacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_titulo_notificacao"
+            android:layout_margin="8dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            card_view:cardCornerRadius="2dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <CheckBox
+                    android:onClick="atualizarNotificacaoStatus"
+                    android:id="@+id/cb_notificacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_notificacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/cb_notificacao"
+                    android:layout_toRightOf="@+id/cb_notificacao"
+                    android:text="Receber notificações sobre eventos e promoções deste estabelecimento."
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>

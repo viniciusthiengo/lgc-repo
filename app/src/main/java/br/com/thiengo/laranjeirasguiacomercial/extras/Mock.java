@@ -1,10 +1,13 @@
 package br.com.thiengo.laranjeirasguiacomercial.extras;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comentario;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
 import br.com.thiengo.laranjeirasguiacomercial.domain.User;
 
 /**
@@ -63,6 +66,34 @@ public class Mock {
         }
 
         return comercio;
+    }
+
+
+
+    public static Imagem criarImagemAleatorio(){
+        int[] imagens = {R.drawable.user_1, R.drawable.user_2, R.drawable.user_3, R.drawable.user_4};
+        String[] legendas = {
+                "Faixada do estabeleciomento",
+                "Alguns amigos se reunindo para desfrutar dos melhores frutos do mar",
+                "Churrasco marítmo, primeiro do estado com essa característica",
+                ""// Assistindo ao jogo depois da hora do rush
+        };
+        int posImagem = (int) (Math.random() * 4);
+        int posLegenda = (int) (Math.random() * 4);
+        int likes = (int) (Math.random() * 100);
+        int compartilhamentos = (int) (Math.random() * 100);
+        Imagem imagem = new Imagem( "", imagens[posImagem], legendas[posLegenda], likes, compartilhamentos );
+
+        return imagem;
+    }
+
+    public static ArrayList<Imagem> criarGaleriaAleatorio(){
+        ArrayList<Imagem> galeria = new ArrayList<>();
+        for( int i = 0; i < 20; i++ ){
+            galeria.add( criarImagemAleatorio() );
+        }
+
+        return galeria;
     }
 }
 

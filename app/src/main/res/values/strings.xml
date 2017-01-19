@@ -19,5 +19,5 @@
     <string name="title_activity_comercio">ComercioActivity</string>
 
 
-    <string name="google_maps_api_key">AIzaSyDOihMz2Y_I9PwQ2dBmrzEUrlr_xJQAkGE</string>
+    <string name="google_api_key">AIzaSyDOihMz2Y_I9PwQ2dBmrzEUrlr_xJQAkGE</string>
 </resources>

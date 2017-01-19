@@ -1,17 +1,25 @@
 package br.com.thiengo.laranjeirasguiacomercial;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -21,11 +29,26 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.thiengo.laranjeirasguiacomercial.adapters.GaleriaAdapter;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
+import br.com.thiengo.laranjeirasguiacomercial.domain.YouTubeInitializedListener;
+import br.com.thiengo.laranjeirasguiacomercial.extras.Mock;
+import br.com.thiengo.laranjeirasguiacomercial.extras.Util;
 
-public class ComercioActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class ComercioActivity extends AppCompatActivity
+        implements OnMapReadyCallback {
+
     private Comercio comercio;
+    private FragmentManager fragManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +66,17 @@ public class ComercioActivity extends AppCompatActivity implements OnMapReadyCal
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MaterialDialog.Builder(ComercioActivity.this)
-                        .title("Compartilhar")
-                        .content("Aqui aparecerão todos os ícones, com ações de compartilhamento, das redes sociais.")
-                        .positiveText("Ok")
-                        .positiveColorRes( R.color.colorLink )
-                        .show();
+                ImageView iv = (ImageView)view;
+                Integer resourceId = (Integer) iv.getTag();
+
+                if( resourceId == null || resourceId == R.drawable.ic_nao_favorito ){
+                    resourceId = R.drawable.ic_favorito_big_icone;
+                }
+                else{
+                    resourceId = R.drawable.ic_nao_favorito_big_icone;
+                }
+                iv.setImageResource( resourceId );
+                iv.setTag( resourceId );
             }
         });
 
@@ -79,9 +107,51 @@ public class ComercioActivity extends AppCompatActivity implements OnMapReadyCal
         tvLocalizacao.setText( Html.fromHtml( "<b>Endereço:</b> "+comercio.getLocalizacao() ) );
 
 
+        fragManager = getSupportFragmentManager();
+
         // MAPS
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fm_mapa);
+        SupportMapFragment mapFragment = (SupportMapFragment) fragManager.findFragmentById(R.id.fm_mapa);
         mapFragment.getMapAsync(this);
+
+        // YOUTUBE
+        setYouTubeArea();
+
+        // GALERIA
+        iniGaleria();
+    }
+
+    private void setYouTubeArea(){
+        if( comercio != null ){
+            YouTubePlayerSupportFragment youTubeFragment = (YouTubePlayerSupportFragment) fragManager.findFragmentById(R.id.ypv_video);
+            youTubeFragment.initialize( getResources().getString(R.string.google_api_key), new YouTubeInitializedListener(this));
+        }
+        else{
+            findViewById(R.id.tv_titulo_video).setVisibility(View.GONE);
+            findViewById(R.id.iv_video).setVisibility(View.GONE);
+            findViewById(R.id.cv_video).setVisibility(View.GONE);
+
+            View view = findViewById(R.id.tv_titulo_galeria);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            lp.addRule(RelativeLayout.BELOW, R.id.cv_descricao);
+
+            view = findViewById(R.id.iv_galeria);
+            lp = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            lp.addRule(RelativeLayout.BELOW, R.id.cv_descricao);
+        }
+    }
+
+    private void iniGaleria(){
+        ArrayList<Imagem> imagens = Mock.criarGaleriaAleatorio();
+        RecyclerView rvGaleria = (RecyclerView) findViewById(R.id.rv_galeria);
+        //GridLayoutManager layoutManager = new GridLayoutManager(this, 5);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL );
+        GaleriaAdapter adapter = new GaleriaAdapter(imagens);
+
+        layoutManager.setAutoMeasureEnabled(true);
+        rvGaleria.setNestedScrollingEnabled(false);
+        rvGaleria.setHasFixedSize(false);
+        rvGaleria.setLayoutManager( layoutManager );
+        rvGaleria.setAdapter(adapter);
     }
 
     @Override
@@ -125,5 +195,29 @@ public class ComercioActivity extends AppCompatActivity implements OnMapReadyCal
         }
 
         startActivity(intent);
+    }
+
+    public void compartilhar( View view ){
+        new MaterialDialog.Builder(ComercioActivity.this)
+            .title("Compartilhar")
+            .content("Compartilhar em: "+view.getId())
+            .positiveText("Ok")
+            .positiveColorRes( R.color.colorLink )
+            .show();
+    }
+
+    public void atualizarNotificacaoStatus( View view ){
+        CheckBox cb = (CheckBox) view;
+
+        new MaterialDialog.Builder(ComercioActivity.this)
+            .title("Atualizar status notificação")
+            .content("Status: "+ (cb.isChecked() ? "Checked" : "Not checked") )
+            .positiveText("Ok")
+            .positiveColorRes( R.color.colorLink )
+            .show();
+    }
+
+    public FragmentManager getFragManager(){
+        return fragManager;
     }
 }

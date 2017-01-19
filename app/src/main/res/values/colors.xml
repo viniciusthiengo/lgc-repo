@@ -7,4 +7,5 @@
     <color name="colorActionButton">#82b73f</color>
     <color name="colorFacebookButton">#4665ac</color>
     <color name="colorActivityBackground">#ffffff</color>
+    <color name="colorItemGaleriaTextobackground">#aa000000</color>
 </resources>

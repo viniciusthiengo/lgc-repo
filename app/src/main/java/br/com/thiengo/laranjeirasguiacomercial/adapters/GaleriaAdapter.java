@@ -1,5 +1,6 @@
 package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -32,6 +33,7 @@ import br.com.thiengo.laranjeirasguiacomercial.fragments.ImagemFragment;
 public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHolder> {
 
     private ArrayList<Imagem> imagens;
+    private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivImagem;
@@ -60,7 +62,7 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            FragmentManager fragManager = ((ComercioActivity) ivImagem.getContext()).getFragManager();
+            FragmentManager fragManager = ((ComercioActivity) context).getFragManager();
             FragmentTransaction ft = fragManager.beginTransaction();
             Fragment fragAnterior = fragManager.findFragmentByTag( ImagemFragment.KEY );
             if (fragAnterior != null) {
@@ -78,7 +80,8 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
         }
     }
 
-    public GaleriaAdapter(ArrayList<Imagem> imagens){
+    public GaleriaAdapter( Context context, ArrayList<Imagem> imagens){
+        this.context = context;
         this.imagens = imagens;
     }
 

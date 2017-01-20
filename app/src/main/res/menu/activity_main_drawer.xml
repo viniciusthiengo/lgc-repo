@@ -5,55 +5,58 @@
         <item
             android:id="@+id/nav_academia"
             android:icon="@drawable/ic_academia"
-            android:title="Academias" />
+            android:title="@string/item_academias" />
         <item
             android:id="@+id/nav_administracao_de_imoveis"
             android:icon="@drawable/ic_administracao_de_imoveis"
-            android:title="Administração de imóveis" />
+            android:title="@string/item_administracao_de_imoveis" />
         <item
             android:id="@+id/nav_bares_e_boutequins"
             android:icon="@drawable/ic_bares_e_boutequins"
-            android:title="Bares e boutequins" />
+            android:title="@string/item_bares_e_boutequins" />
         <item
             android:id="@+id/nav_bijouterias_e_acessorios"
             android:icon="@drawable/ic_bijouterias_e_acessorios"
-            android:title="Bijouterias e acessórios" />
+            android:title="@string/item_bijouterias_e_acessorios" />
         <item
             android:id="@+id/nav_brinquedos"
             android:icon="@drawable/ic_brinquedos"
-            android:title="Brinquedos" />
+            android:title="@string/item_brinquedos" />
         <item
             android:id="@+id/nav_calcados"
             android:icon="@drawable/ic_calcados"
-            android:title="Calçados" />
+            android:title="@string/item_calcados" />
         <item
             android:id="@+id/nav_cerimonial"
             android:icon="@drawable/ic_cerimonial"
-            android:title="Cerimonial" />
+            android:title="@string/item_cerimonial" />
         <item
             android:id="@+id/nav_chaveiros"
             android:icon="@drawable/ic_chaveiros"
-            android:title="Chaveiros" />
+            android:title="@string/item_chaveiros" />
         <item
             android:id="@+id/nav_dentistas"
             android:icon="@drawable/ic_dentistas"
-            android:title="Dentistas" />
+            android:title="@string/item_dentistas" />
         <item
             android:id="@+id/nav_escolas_de_idiomas"
             android:icon="@drawable/ic_escolas_de_idiomas"
-            android:title="Escolas de idiomas" />
+            android:title="@string/item_escolas_de_idiomas" />
         <item
             android:id="@+id/nav_pet_shop"
             android:icon="@drawable/ic_pet_shop"
-            android:title="Pet shop" />
+            android:title="@string/item_pet_shop" />
         <item
             android:id="@+id/nav_taxi"
             android:icon="@drawable/ic_taxi"
-            android:title="Taxi" />
+            android:title="@string/item_taxi" />
     </group>
 
     <item android:title="Você e a APP Laranjeiras">
         <menu>
+            <item
+                android:id="@+id/nav_configuracoes"
+                android:title="Configurações" />
             <item
                 android:id="@+id/nav_contato"
                 android:title="Contato" />

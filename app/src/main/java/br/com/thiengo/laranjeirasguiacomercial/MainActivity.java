@@ -81,14 +81,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent intent = null;
 
-        if (id == R.id.nav_contato) {
-            Intent intent = new Intent(this, ContatoActivity.class);
-            startActivity(intent);
-            return true;
+        if (id == R.id.nav_configuracoes) {
+            intent = new Intent(this, ConfiguracoesActivity.class);
+        }
+        else if (id == R.id.nav_contato) {
+            intent = new Intent(this, ContatoActivity.class);
         }
         else if (id == R.id.nav_sobre) {
-            Intent intent = new Intent(this, SobreActivity.class);
+            intent = new Intent(this, SobreActivity.class);
+        }
+
+        if( intent != null ){
             startActivity(intent);
             return true;
         }

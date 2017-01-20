@@ -8,4 +8,7 @@
     <color name="colorFacebookButton">#4665ac</color>
     <color name="colorActivityBackground">#ffffff</color>
     <color name="colorItemGaleriaTextobackground">#aa000000</color>
+    <color name="colorTabTextoNaoSelecionado">#ac5701</color>
+    <color name="colorTabTextoSelecionado">#ffffff</color>
+    <color name="colorConteudoComCardView">#f0f0f0</color>
 </resources>

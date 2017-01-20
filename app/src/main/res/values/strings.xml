@@ -20,4 +20,34 @@
 
 
     <string name="google_api_key">AIzaSyDOihMz2Y_I9PwQ2dBmrzEUrlr_xJQAkGE</string>
+    <string name="title_activity_configuracoes">Minhas configurações</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="item_academias">Academias</string>
+    <string name="item_administracao_de_imoveis">Administração de imóveis</string>
+    <string name="item_bares_e_boutequins">Bares e boutequins</string>
+    <string name="item_bijouterias_e_acessorios">Bijouterias e acessórios</string>
+    <string name="item_brinquedos">Brinquedos</string>
+    <string name="item_calcados">Calçados</string>
+    <string name="item_cerimonial">Cerimonial</string>
+    <string name="item_chaveiros">Chaveiros</string>
+    <string name="item_dentistas">Dentistas</string>
+    <string name="item_escolas_de_idiomas">Escolas de idiomas</string>
+    <string name="item_pet_shop">Pet shop</string>
+    <string name="item_taxi">Taxi</string>
+    <string-array name="cateogiras">
+        <item>@string/item_academias</item>
+        <item>@string/item_administracao_de_imoveis</item>
+        <item>@string/item_bares_e_boutequins</item>
+        <item>@string/item_bijouterias_e_acessorios</item>
+        <item>@string/item_brinquedos</item>
+        <item>@string/item_calcados</item>
+        <item>@string/item_cerimonial</item>
+        <item>@string/item_chaveiros</item>
+        <item>@string/item_dentistas</item>
+        <item>@string/item_escolas_de_idiomas</item>
+        <item>@string/item_pet_shop</item>
+        <item>@string/item_taxi</item>
+    </string-array>
 </resources>

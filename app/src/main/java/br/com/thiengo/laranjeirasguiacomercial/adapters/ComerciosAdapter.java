@@ -1,10 +1,7 @@
 package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +71,7 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
 
         private void setData( Comercio comercio ){
             ivPrincipal.setImageResource( comercio.getImagem() );
-            tvNomeFantasia.setText( comercio.getNomeFantasia() );
+            tvNomeFantasia.setText( comercio.getNome() );
             tvLocalizacao.setText( comercio.getLocalizacao() );
             tvAvaliacaoPontos.setText( String.format("%.1f", comercio.getAvaliacaoPontos()) );
             tvAvaliacaoQtd.setText( "("+String.valueOf(comercio.getAvaliacaoQtd())+")" );

@@ -10,22 +10,24 @@ import java.util.List;
  * Created by viniciusthiengo on 12/01/17.
  */
 
-public class Comercio implements Parcelable {
-    public static final String COMERCIO_SELECIONADO_KEY = "comercion_selecionado";
+public class Comercio implements Parcelable, NotificacaoImpl {
+    public static final String COMERCIO_SELECIONADO_KEY = "comercio_selecionado";
 
     private int imagem;
-    private String nomeFantasia;
+    private String nome;
     private String localizacao;
     private double avaliacaoPontos;
     private int avaliacaoQtd;
     private List<Comentario> comentarios;
+    private boolean statusNotificacao;
 
-    public Comercio(int imagem, String nomeFantasia, String localizacao, double avaliacaoPontos, int avaliacaoQtd) {
+    public Comercio(int imagem, String nome, String localizacao, double avaliacaoPontos, int avaliacaoQtd, boolean statusNotificacao) {
         this.imagem = imagem;
-        this.nomeFantasia = nomeFantasia;
+        this.nome = nome;
         this.localizacao = localizacao;
         this.avaliacaoPontos = avaliacaoPontos;
         this.avaliacaoQtd = avaliacaoQtd;
+        this.statusNotificacao = statusNotificacao;
         comentarios = new ArrayList<>();
     }
 
@@ -37,12 +39,12 @@ public class Comercio implements Parcelable {
         this.imagem = imagem;
     }
 
-    public String getNomeFantasia() {
-        return nomeFantasia;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getLocalizacao() {
@@ -77,6 +79,14 @@ public class Comercio implements Parcelable {
         this.comentarios = comentarios;
     }
 
+    public boolean statusNotificacao() {
+        return statusNotificacao;
+    }
+
+    public void setStatusNotificacao(boolean statusNotificacao) {
+        this.statusNotificacao = statusNotificacao;
+    }
+
 
     @Override
     public int describeContents() {
@@ -86,23 +96,25 @@ public class Comercio implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.imagem);
-        dest.writeString(this.nomeFantasia);
+        dest.writeString(this.nome);
         dest.writeString(this.localizacao);
         dest.writeDouble(this.avaliacaoPontos);
         dest.writeInt(this.avaliacaoQtd);
         dest.writeTypedList(this.comentarios);
+        dest.writeByte(this.statusNotificacao ? (byte) 1 : (byte) 0);
     }
 
     protected Comercio(Parcel in) {
         this.imagem = in.readInt();
-        this.nomeFantasia = in.readString();
+        this.nome = in.readString();
         this.localizacao = in.readString();
         this.avaliacaoPontos = in.readDouble();
         this.avaliacaoQtd = in.readInt();
         this.comentarios = in.createTypedArrayList(Comentario.CREATOR);
+        this.statusNotificacao = in.readByte() != 0;
     }
 
-    public static final Parcelable.Creator<Comercio> CREATOR = new Parcelable.Creator<Comercio>() {
+    public static final Creator<Comercio> CREATOR = new Creator<Comercio>() {
         @Override
         public Comercio createFromParcel(Parcel source) {
             return new Comercio(source);

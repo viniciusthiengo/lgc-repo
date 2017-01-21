@@ -75,7 +75,7 @@ public class ComercioActivity extends AppCompatActivity
         comercio = getIntent().getParcelableExtra( Comercio.COMERCIO_SELECIONADO_KEY );
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        collapsingToolbar.setTitle( comercio.getNomeFantasia() );
+        collapsingToolbar.setTitle( comercio.getNome() );
 
         ImageView ivCabecalho = (ImageView) findViewById(R.id.iv_cabecalho);
         ivCabecalho.setImageResource( comercio.getImagem() );
@@ -201,7 +201,7 @@ public class ComercioActivity extends AppCompatActivity
         CheckBox cb = (CheckBox) view;
 
         new MaterialDialog.Builder(ComercioActivity.this)
-            .title("Atualizar status notificação")
+            .title("Atualizar statusNotificacao notificação")
             .content("Status: "+ (cb.isChecked() ? "Checked" : "Not checked") )
             .positiveText("Ok")
             .positiveColorRes( R.color.colorLink )

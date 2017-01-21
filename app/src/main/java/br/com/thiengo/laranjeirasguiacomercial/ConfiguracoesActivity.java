@@ -3,6 +3,7 @@ package br.com.thiengo.laranjeirasguiacomercial;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -34,8 +35,6 @@ public class ConfiguracoesActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter sectionsPagerAdapter;
-    private ViewPager vpSecoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,8 @@ public class ConfiguracoesActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        vpSecoes = (ViewPager) findViewById(R.id.vp_secoes);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        ViewPager vpSecoes = (ViewPager) findViewById(R.id.vp_secoes);
         vpSecoes.setAdapter(sectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tl_abas);
@@ -70,7 +69,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);

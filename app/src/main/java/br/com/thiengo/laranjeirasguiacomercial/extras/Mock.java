@@ -1,13 +1,17 @@
 package br.com.thiengo.laranjeirasguiacomercial.extras;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import br.com.thiengo.laranjeirasguiacomercial.R;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Categoria;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comentario;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
+import br.com.thiengo.laranjeirasguiacomercial.domain.NotificacaoImpl;
 import br.com.thiengo.laranjeirasguiacomercial.domain.User;
 
 /**
@@ -54,12 +58,14 @@ public class Mock {
         int posNome = (int) (Math.random() * 3);
         int posLocal = (int) (Math.random() * 3);
         int qtdComentarios = (int) (Math.random() * 4);
+        boolean statusNotificacao = (int)(Math.random() * 3) % 2 == 0;
         Comercio comercio = new Comercio(
                 imagens[ posImagem ],
                 nomesFantasia[ posNome ],
                 localizacoes[ posLocal ],
                 avaliacaoPontos,
-                avaliacaoQtd );
+                avaliacaoQtd,
+                statusNotificacao );
 
         for( int i = 0; i < qtdComentarios; i++ ){
             comercio.getComentarios().add( criarComentarioAleatorio() );
@@ -68,7 +74,27 @@ public class Mock {
         return comercio;
     }
 
+    public static ArrayList<NotificacaoImpl> obterCategoriasNotificacao(Context context){
+        String[] categoriasString = context.getResources().getStringArray( R.array.cateogiras );
+        ArrayList<NotificacaoImpl> categorias = new ArrayList<>();
 
+        for( String categoria : categoriasString ){
+            boolean status = (int)(Math.random() * 3) % 2 == 0;
+            categorias.add( new Categoria( categoria, status ) );
+        }
+        return categorias;
+    }
+
+    public static ArrayList<NotificacaoImpl> obterComerciosNotificacao(){
+        ArrayList<NotificacaoImpl> comercios = new ArrayList<>();
+        int posComercios = (int) (Math.random() * 4) + 4;
+
+        for( int i = 0; i < posComercios; i++ ){
+            comercios.add( criarComercioAleatorio() );
+        }
+
+        return comercios;
+    }
 
     public static Imagem criarImagemAleatorio(){
         int[] imagens = {R.drawable.user_1, R.drawable.user_2, R.drawable.user_3, R.drawable.user_4};

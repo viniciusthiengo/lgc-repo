@@ -1,16 +1,19 @@
 package br.com.thiengo.laranjeirasguiacomercial.fragments;
 
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ public class ImagemFragment extends DialogFragment implements View.OnClickListen
     public static final String KEY = "dialog";
     public static final String GALERIA_KEY = "galeria";
     public static final String POSICAO_GALERIA_KEY = "posicao";
-    public static final String STATUS_VIEWS_KEY = "status";
+    public static final String STATUS_VIEWS_KEY = "statusNotificacao";
 
     private ArrayList<Imagem> imagens;
     private View rlCabecalho;
@@ -38,6 +41,15 @@ public class ImagemFragment extends DialogFragment implements View.OnClickListen
     private TextView tvLegenda;
     private int posicao;
     private boolean statusViews = true;
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog( savedInstanceState );
+        dialog.getWindow().requestFeature( Window.FEATURE_NO_TITLE );
+
+        return dialog;
+    }
 
     @Nullable
     @Override

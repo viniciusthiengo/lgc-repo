@@ -15,16 +15,16 @@ import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
  */
 
 public class YouTubeInitializedListener implements YouTubePlayer.OnInitializedListener {
-    private WeakReference<Activity> weakActivity;
+    private WeakReference<Comercio> weakActivity;
 
-    public YouTubeInitializedListener( Activity activity ){
-        weakActivity = new WeakReference<Activity>(activity);
+    public YouTubeInitializedListener( Comercio comercio ){
+        weakActivity = new WeakReference<Comercio>(comercio);
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean foiRestaurado) {
         if( !foiRestaurado ) {
-            youTubePlayer.loadVideo("aJ7BoNG-r2c");
+            youTubePlayer.loadVideo( weakActivity.get().getYouTubeCode() );
             //youTubePlayer.play();
         }
     }

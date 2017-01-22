@@ -5,7 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,11 +41,14 @@ import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Data;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
 import br.com.thiengo.laranjeirasguiacomercial.domain.YouTubeInitializedListener;
 import br.com.thiengo.laranjeirasguiacomercial.extras.Mock;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.AvaliacaoFragment;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment;
 
 public class ComercioActivity extends AppCompatActivity
-        implements OnMapReadyCallback {
+        implements OnMapReadyCallback, View.OnClickListener {
 
     private Comercio comercio;
     private FragmentManager fragManager;
@@ -60,22 +66,7 @@ public class ComercioActivity extends AppCompatActivity
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImageView iv = (ImageView)view;
-                Integer resourceId = (Integer) iv.getTag();
-
-                if( resourceId == null || resourceId == R.drawable.ic_nao_favorito ){
-                    resourceId = R.drawable.ic_favorito_big_icone;
-                }
-                else{
-                    resourceId = R.drawable.ic_nao_favorito_big_icone;
-                }
-                iv.setImageResource( resourceId );
-                iv.setTag( resourceId );
-            }
-        });
+        fab.setOnClickListener(this);
 
 
         comercio = getIntent().getParcelableExtra( Comercio.COMERCIO_SELECIONADO_KEY );
@@ -85,6 +76,15 @@ public class ComercioActivity extends AppCompatActivity
 
         ImageView ivCabecalho = (ImageView) findViewById(R.id.iv_cabecalho);
         ivCabecalho.setImageResource( comercio.getImagem() );
+
+        TextView tvTelefone = (TextView) findViewById(R.id.tv_telefone);
+        tvTelefone.setText( comercio.getTelefone() );
+
+        TextView tvEmail = (TextView) findViewById(R.id.tv_email);
+        tvEmail.setText( comercio.getEmail() );
+
+        TextView tvSite = (TextView) findViewById(R.id.tv_site);
+        tvSite.setText( comercio.getSite() );
 
         String conteudo = "Segunda-feira: <b>09:00 - 18:00</b><br>";
         conteudo += "Terça-feira: <b>09:00 - 18:00</b><br>";
@@ -102,7 +102,6 @@ public class ComercioActivity extends AppCompatActivity
 
         TextView tvLocalizacao = (TextView) findViewById(R.id.tv_localizacao);
         tvLocalizacao.setText( Html.fromHtml( "<b>Endereço:</b> "+comercio.getLocalizacao() ) );
-
 
         fragManager = getSupportFragmentManager();
 
@@ -123,7 +122,7 @@ public class ComercioActivity extends AppCompatActivity
     private void setYouTubeArea(){
         if( comercio != null ){
             YouTubePlayerSupportFragment youTubeFragment = (YouTubePlayerSupportFragment) fragManager.findFragmentById(R.id.ypv_video);
-            youTubeFragment.initialize( getResources().getString(R.string.google_api_key), new YouTubeInitializedListener(this));
+            youTubeFragment.initialize( getResources().getString(R.string.google_api_key), new YouTubeInitializedListener( comercio ));
         }
         else{
             findViewById(R.id.tv_titulo_video).setVisibility(View.GONE);
@@ -167,6 +166,10 @@ public class ComercioActivity extends AppCompatActivity
         rvGaleria.setAdapter(adapter);
     }
 
+    public Comercio getComercio(){
+        return comercio;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -192,17 +195,17 @@ public class ComercioActivity extends AppCompatActivity
         Intent intent = null;
 
         if( view.getId() == R.id.tv_telefone ){
-            String numero = "27997863727";
+            String numero = comercio.getTelefonePuro();
             intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", numero, null));
         }
         else if( view.getId() == R.id.tv_email ){
-            String email = "thiengocalopsita@gmail.com";
+            String email = comercio.getEmail();
             intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",email, null));
             intent.putExtra(Intent.EXTRA_TEXT, "Acesso direto de Laranjeiras Guia Comercial APP");
             intent = Intent.createChooser(intent, "Enviar email");
         }
         else if( view.getId() == R.id.tv_site ){
-            String url = "http://www.thiengo.com.br";
+            String url = comercio.getSite();
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
         }
@@ -230,11 +233,36 @@ public class ComercioActivity extends AppCompatActivity
             .show();
     }
 
-    public FragmentManager getFragManager(){
-        return fragManager;
+    public void avaliarComercio( View view ){
+        FragmentTransaction ft = fragManager.beginTransaction();
+        Fragment fragAnterior = fragManager.findFragmentByTag( AvaliacaoFragment.KEY );
+        if (fragAnterior != null) {
+            ft.remove(fragAnterior);
+        }
+        ft.addToBackStack(null);
+
+        Bundle dados = new Bundle();
+        dados.putParcelable(
+                Comercio.COMERCIO_SELECIONADO_KEY,
+                comercio );
+
+        DialogFragment dialog = new AvaliacaoFragment();
+        dialog.setArguments(dados);
+        dialog.show(ft, AvaliacaoFragment.KEY);
     }
 
-    public void avaliarComercio( View view ){
-        Log.i("log", "Abrir dialog de avaliação.");
+    @Override
+    public void onClick(View view) {
+        ImageView iv = (ImageView)view;
+        Integer resourceId = (Integer) iv.getTag();
+
+        if( resourceId == null || resourceId == R.drawable.ic_nao_favorito ){
+            resourceId = R.drawable.ic_favorito_big_icone;
+        }
+        else{
+            resourceId = R.drawable.ic_nao_favorito_big_icone;
+        }
+        iv.setImageResource( resourceId );
+        iv.setTag( resourceId );
     }
 }

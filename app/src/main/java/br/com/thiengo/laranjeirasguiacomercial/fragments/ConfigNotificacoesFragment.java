@@ -104,7 +104,6 @@ public class ConfigNotificacoesFragment extends Fragment
                 .title("Notificações atualizadas")
                 .content("Dados de notificações atualizados com sucesso")
                 .positiveText("Ok")
-                .positiveColorRes( R.color.colorLink )
                 .show();
         }
     }

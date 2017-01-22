@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="24dp"
+    tools:context="br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment">
+
+    <TextView
+        android:id="@+id/tv_cabecalho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/rb_avaliacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_cabecalho"
+        android:layout_marginBottom="8dp"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="0.5" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_resposta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rb_avaliacao"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="200">
+
+        <EditText
+            android:id="@+id/et_resposta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:gravity="bottom|left"
+            android:hint="Resposta"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:maxLength="200"
+            android:maxLines="1"
+            android:minLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/til_resposta"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="Enviar"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignBaseline="@+id/tv_enviar"
+        android:layout_below="@+id/til_resposta"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/tv_enviar"
+        android:layout_toStartOf="@+id/tv_enviar"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="Cancelar"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+</RelativeLayout>

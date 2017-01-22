@@ -66,7 +66,6 @@ public class ConfigSenhaFragment extends Fragment
                 .title("Senha atualizada")
                 .content("Senha atualizada com sucesso")
                 .positiveText("Ok")
-                .positiveColorRes( R.color.colorLink )
                 .show();
         }
     }

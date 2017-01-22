@@ -28,7 +28,6 @@ public class Autenticacao {
             .title("Confirmação")
             .content("Informe sua senha para prosseguir com a atualização")
             .positiveText("Ok")
-            .positiveColorRes( R.color.colorLink )
             .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
             .input("Senha", "", new MaterialDialog.InputCallback() {
                 @Override
@@ -38,7 +37,6 @@ public class Autenticacao {
             .positiveColorRes( R.color.colorLink )
             .onPositive( callback )
             .negativeText("Voltar")
-            .negativeColorRes( android.R.color.black )
             .onNegative(callback)
             .cancelable(false);
 

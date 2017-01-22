@@ -8,6 +8,8 @@ import android.os.Parcelable;
  */
 
 public class Resposta implements Parcelable {
+    public static final String RESPOSTA_KEY = "resposta_key";
+
     private User user;
     private String resposta;
     private Data data;

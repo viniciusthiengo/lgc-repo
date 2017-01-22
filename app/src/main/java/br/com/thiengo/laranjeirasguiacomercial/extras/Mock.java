@@ -104,25 +104,35 @@ public class Mock {
     public static Comercio criarComercioAleatorio(){
         int[] imagens = {R.drawable.loja_1, R.drawable.loja_2, R.drawable.loja_3, R.drawable.loja_4};
         String[] nomesFantasia = {"Pontiac 22 Street", "McDonalds Brasil", "Shopping Aldeia das Laranjeiras"};
+        String[] telefones = {"(27) 9-9865-3325", "(27) 9-9985-8684", "(27) 9-8865-3214"};
+        String email = "thiengocalopsita@gmail.com";
+        String site = "http://www.thiengo.com.br";
         String[] localizacoes = {
                 "Centro Cultural São Paulo, Rua Vergueiro, 1000 - Paraíso, São Paulo - SP, 01504-000, Brasil",
                 "Museu da Imigração do Estado de São Paulo, R. Visc. de Parnaíba, 1316 - Mooca, São Paulo - SP, 03164-300, Brasil",
                 "Anhembi, Av. Olavo Fontoura, 1209 - Santana, São Paulo - SP, 02012-021, Brasil"
         };
+        String[] youTubeCodes = { "dXrHCAxdE-0", "yFiiBet0NJY", "K-OTJU6-PnE" };
         double avaliacaoPontos = Math.random() * 5;
         int avaliacaoQtd = (int) (Math.random() * 109);
         int posImagem = (int) (Math.random() * 4);
         int posNome = (int) (Math.random() * 3);
+        int posTelefone = (int) (Math.random() * 3);
         int posLocal = (int) (Math.random() * 3);
+        int posYouTubeCode = (int) (Math.random() * 3);
         int qtdComentarios = (int) (Math.random() * 4);
         boolean statusNotificacao = (int)(Math.random() * 3) % 2 == 0;
         Comercio comercio = new Comercio(
-                imagens[ posImagem ],
-                nomesFantasia[ posNome ],
-                localizacoes[ posLocal ],
-                avaliacaoPontos,
-                avaliacaoQtd,
-                statusNotificacao );
+            imagens[ posImagem ],
+            nomesFantasia[ posNome ],
+            telefones[ posTelefone ],
+            email,
+            site,
+            localizacoes[ posLocal ],
+            avaliacaoPontos,
+            avaliacaoQtd,
+            statusNotificacao,
+            youTubeCodes[ posYouTubeCode ] );
 
         for( int i = 0; i < qtdComentarios; i++ ){
             comercio.getAvaliacoes().add( criarAvaliacaoAleatorio() );

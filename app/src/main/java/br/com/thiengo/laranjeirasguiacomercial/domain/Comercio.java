@@ -20,14 +20,31 @@ public class Comercio implements Parcelable, NotificacaoImpl {
     private int avaliacaoQtd;
     private List<Avaliacao> avaliacoes;
     private boolean statusNotificacao;
+    private String youTubeCode;
+    private String telefone;
+    private String email;
+    private String site;
 
-    public Comercio(int imagem, String nome, String localizacao, double avaliacaoPontos, int avaliacaoQtd, boolean statusNotificacao) {
+    public Comercio(int imagem,
+                    String nome,
+                    String telefone,
+                    String email,
+                    String site,
+                    String localizacao,
+                    double avaliacaoPontos,
+                    int avaliacaoQtd,
+                    boolean statusNotificacao, String youTubeCode ) {
+
         this.imagem = imagem;
         this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.site = site;
         this.localizacao = localizacao;
         this.avaliacaoPontos = avaliacaoPontos;
         this.avaliacaoQtd = avaliacaoQtd;
         this.statusNotificacao = statusNotificacao;
+        this.youTubeCode = youTubeCode;
         avaliacoes = new ArrayList<>();
     }
 
@@ -87,6 +104,41 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         this.statusNotificacao = statusNotificacao;
     }
 
+    public String getYouTubeCode() {
+        return youTubeCode;
+    }
+
+    public void setYouTubeCode(String youTubeCode) {
+        this.youTubeCode = youTubeCode;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getTelefonePuro(){
+        return telefone.replaceAll("[^0-9]","");
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
 
     @Override
     public int describeContents() {
@@ -102,6 +154,10 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         dest.writeInt(this.avaliacaoQtd);
         dest.writeTypedList(this.avaliacoes);
         dest.writeByte(this.statusNotificacao ? (byte) 1 : (byte) 0);
+        dest.writeString(this.youTubeCode);
+        dest.writeString(this.telefone);
+        dest.writeString(this.email);
+        dest.writeString(this.site);
     }
 
     protected Comercio(Parcel in) {
@@ -112,6 +168,10 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         this.avaliacaoQtd = in.readInt();
         this.avaliacoes = in.createTypedArrayList(Avaliacao.CREATOR);
         this.statusNotificacao = in.readByte() != 0;
+        this.youTubeCode = in.readString();
+        this.telefone = in.readString();
+        this.email = in.readString();
+        this.site = in.readString();
     }
 
     public static final Creator<Comercio> CREATOR = new Creator<Comercio>() {

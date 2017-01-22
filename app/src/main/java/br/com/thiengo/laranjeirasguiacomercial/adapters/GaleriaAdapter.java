@@ -56,7 +56,7 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            FragmentManager fragManager = ((ComercioActivity) context).getFragManager();
+            FragmentManager fragManager = ((ComercioActivity) context).getSupportFragmentManager();
             FragmentTransaction ft = fragManager.beginTransaction();
             Fragment fragAnterior = fragManager.findFragmentByTag( ImagemFragment.KEY );
             if (fragAnterior != null) {

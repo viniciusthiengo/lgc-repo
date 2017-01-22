@@ -36,7 +36,6 @@
             android:layout_toEndOf="@+id/iv_telefone"
             android:layout_toRightOf="@+id/iv_telefone"
             android:onClick="intencoesContato"
-            android:text="(27) 9-9786-7766"
             android:textColor="@color/colorLink"
             android:textSize="18sp" />
 
@@ -65,7 +64,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:onClick="intencoesContato"
-            android:text="thiengocalopsita@gmail.com"
             android:textColor="@color/colorLink"
             android:textSize="18sp" />
 
@@ -94,7 +92,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:onClick="intencoesContato"
-            android:text="http://www.thiengo.com.br"
             android:textColor="@color/colorLink"
             android:textSize="18sp" />
 

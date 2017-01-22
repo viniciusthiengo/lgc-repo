@@ -11,13 +11,15 @@ import java.util.List;
  */
 
 public class Avaliacao implements Parcelable {
+    public static final String AVALIACAO_KEY = "avaliacao_key";
+
     private User user;
     private String mensagem;
-    private int avaliacao;
+    private float avaliacao;
     private List<Resposta> respostas;
     private Data data;
 
-    public Avaliacao(User user, String mensagem, int avaliacao, Data data) {
+    public Avaliacao(User user, String mensagem, float avaliacao, Data data) {
         this.user = user;
         this.mensagem = mensagem;
         this.avaliacao = avaliacao;
@@ -41,7 +43,7 @@ public class Avaliacao implements Parcelable {
         this.mensagem = mensagem;
     }
 
-    public int getAvaliacao() {
+    public float getAvaliacao() {
         return avaliacao;
     }
 
@@ -75,7 +77,7 @@ public class Avaliacao implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(this.user, flags);
         dest.writeString(this.mensagem);
-        dest.writeInt(this.avaliacao);
+        dest.writeFloat(this.avaliacao);
         dest.writeTypedList(this.respostas);
         dest.writeParcelable(this.data, flags);
     }
@@ -83,7 +85,7 @@ public class Avaliacao implements Parcelable {
     protected Avaliacao(Parcel in) {
         this.user = in.readParcelable(User.class.getClassLoader());
         this.mensagem = in.readString();
-        this.avaliacao = in.readInt();
+        this.avaliacao = in.readFloat();
         this.respostas = in.createTypedArrayList(Resposta.CREATOR);
         this.data = in.readParcelable(Data.class.getClassLoader());
     }

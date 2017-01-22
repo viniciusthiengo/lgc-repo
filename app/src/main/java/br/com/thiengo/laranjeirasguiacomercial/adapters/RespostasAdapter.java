@@ -1,5 +1,11 @@
 package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,8 +18,11 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.ImagemFragment;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment;
 
 /**
  * Created by viniciusthiengo on 12/01/17.
@@ -21,6 +30,7 @@ import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
 
 public class RespostasAdapter extends RecyclerView.Adapter<RespostasAdapter.ViewHolder> {
 
+    private Context context;
     private List<Resposta> respostas;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -51,11 +61,27 @@ public class RespostasAdapter extends RecyclerView.Adapter<RespostasAdapter.View
 
         @Override
         public void onClick(View view) {
-            Log.i("log", "Abrir dialog de resposta.");
+            FragmentManager fragManager = ((ComercioActivity) context).getSupportFragmentManager();
+            FragmentTransaction ft = fragManager.beginTransaction();
+            Fragment fragAnterior = fragManager.findFragmentByTag( RespostaAvaliacaoFragment.KEY );
+            if (fragAnterior != null) {
+                ft.remove(fragAnterior);
+            }
+            ft.addToBackStack(null);
+
+            Bundle dados = new Bundle();
+            dados.putParcelable(
+                    Resposta.RESPOSTA_KEY,
+                    respostas.get( getAdapterPosition() ) );
+
+            DialogFragment dialog = new RespostaAvaliacaoFragment();
+            dialog.setArguments(dados);
+            dialog.show(ft, RespostaAvaliacaoFragment.KEY);
         }
     }
 
-    public RespostasAdapter(){
+    public RespostasAdapter(Context context){
+        this.context = context;
         respostas = new ArrayList<>();
     }
 

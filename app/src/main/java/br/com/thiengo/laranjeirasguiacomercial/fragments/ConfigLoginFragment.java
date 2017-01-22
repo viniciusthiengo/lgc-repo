@@ -66,7 +66,6 @@ public class ConfigLoginFragment extends Fragment
                     .title("Dados atualizados")
                     .content("Dados atualizados")
                     .positiveText("Ok")
-                    .positiveColorRes( R.color.colorLink )
                     .show();
         }
     }

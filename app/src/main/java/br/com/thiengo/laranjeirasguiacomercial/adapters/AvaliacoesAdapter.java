@@ -1,6 +1,11 @@
 package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,10 +19,14 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
 
+import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
 import br.com.thiengo.laranjeirasguiacomercial.extras.Mock;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.AvaliacaoFragment;
+import br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment;
 
 /**
  * Created by viniciusthiengo on 12/01/17.
@@ -62,7 +71,7 @@ public class AvaliacoesAdapter extends RecyclerView.Adapter<AvaliacoesAdapter.Vi
 
         private void iniRecyclerViewRespostas(){
             LinearLayoutManager layoutManager = new LinearLayoutManager( context );
-            RespostasAdapter adapter = new RespostasAdapter();
+            RespostasAdapter adapter = new RespostasAdapter( context );
 
             layoutManager.setAutoMeasureEnabled(true);
             rvRespostas.setNestedScrollingEnabled(false);
@@ -89,8 +98,12 @@ public class AvaliacoesAdapter extends RecyclerView.Adapter<AvaliacoesAdapter.Vi
         }
 
         private void setEstrela( ImageView ivEstrela, int posicaoEstrela, Avaliacao avaliacao){
-            if( posicaoEstrela <= avaliacao.getAvaliacao() ){
+            if( posicaoEstrela <= (int) avaliacao.getAvaliacao() ){
                 ivEstrela.setImageResource(R.drawable.ic_estrela);
+            }
+            else if( posicaoEstrela > avaliacao.getAvaliacao()
+                    && (posicaoEstrela - 1) < avaliacao.getAvaliacao() ){
+                ivEstrela.setImageResource(R.drawable.ic_estrela_metade);
             }
             else{
                 ivEstrela.setImageResource(R.drawable.ic_estrela_vazia);
@@ -103,7 +116,22 @@ public class AvaliacoesAdapter extends RecyclerView.Adapter<AvaliacoesAdapter.Vi
 
         @Override
         public void onClick(View view) {
-            Log.i("log", "Abrir dialog de atualização.");
+            ComercioActivity comercioActivity = (ComercioActivity) context;
+            FragmentManager fragManager = comercioActivity.getSupportFragmentManager();
+            FragmentTransaction ft = fragManager.beginTransaction();
+            Fragment fragAnterior = fragManager.findFragmentByTag( AvaliacaoFragment.KEY );
+            if (fragAnterior != null) {
+                ft.remove(fragAnterior);
+            }
+            ft.addToBackStack(null);
+
+            Bundle dados = new Bundle();
+            dados.putParcelable( Comercio.COMERCIO_SELECIONADO_KEY, comercioActivity.getComercio() );
+            dados.putParcelable( Avaliacao.AVALIACAO_KEY, avaliacoes.get( getAdapterPosition() ) );
+
+            DialogFragment dialog = new AvaliacaoFragment();
+            dialog.setArguments(dados);
+            dialog.show(ft, AvaliacaoFragment.KEY);
         }
     }
 

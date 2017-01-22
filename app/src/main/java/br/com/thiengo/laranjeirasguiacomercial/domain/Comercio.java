@@ -18,7 +18,7 @@ public class Comercio implements Parcelable, NotificacaoImpl {
     private String localizacao;
     private double avaliacaoPontos;
     private int avaliacaoQtd;
-    private List<Comentario> comentarios;
+    private List<Avaliacao> avaliacoes;
     private boolean statusNotificacao;
 
     public Comercio(int imagem, String nome, String localizacao, double avaliacaoPontos, int avaliacaoQtd, boolean statusNotificacao) {
@@ -28,7 +28,7 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         this.avaliacaoPontos = avaliacaoPontos;
         this.avaliacaoQtd = avaliacaoQtd;
         this.statusNotificacao = statusNotificacao;
-        comentarios = new ArrayList<>();
+        avaliacoes = new ArrayList<>();
     }
 
     public int getImagem() {
@@ -71,12 +71,12 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         this.avaliacaoQtd = avaliacaoQtd;
     }
 
-    public List<Comentario> getComentarios() {
-        return comentarios;
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
     }
 
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 
     public boolean statusNotificacao() {
@@ -100,7 +100,7 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         dest.writeString(this.localizacao);
         dest.writeDouble(this.avaliacaoPontos);
         dest.writeInt(this.avaliacaoQtd);
-        dest.writeTypedList(this.comentarios);
+        dest.writeTypedList(this.avaliacoes);
         dest.writeByte(this.statusNotificacao ? (byte) 1 : (byte) 0);
     }
 
@@ -110,7 +110,7 @@ public class Comercio implements Parcelable, NotificacaoImpl {
         this.localizacao = in.readString();
         this.avaliacaoPontos = in.readDouble();
         this.avaliacaoQtd = in.readInt();
-        this.comentarios = in.createTypedArrayList(Comentario.CREATOR);
+        this.avaliacoes = in.createTypedArrayList(Avaliacao.CREATOR);
         this.statusNotificacao = in.readByte() != 0;
     }
 

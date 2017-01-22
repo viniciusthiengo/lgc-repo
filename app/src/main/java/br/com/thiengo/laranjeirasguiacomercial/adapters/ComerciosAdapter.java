@@ -14,7 +14,7 @@ import java.util.List;
 
 import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Comentario;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 
 /**
@@ -86,10 +86,10 @@ public class ComerciosAdapter extends RecyclerView.Adapter<ComerciosAdapter.View
         }
 
         private void setComentario(CircularImageView civPerfil, TextView tvMensagem, Comercio comercio, int position){
-            if( comercio.getComentarios().size() >= (position + 1) ){
-                Comentario comentario = comercio.getComentarios().get( position );
-                civPerfil.setImageResource( comentario.getUser().getImagem() );
-                tvMensagem.setText( comentario.getMensagem() );
+            if( comercio.getAvaliacoes().size() >= (position + 1) ){
+                Avaliacao avaliacao = comercio.getAvaliacoes().get( position );
+                civPerfil.setImageResource( avaliacao.getUser().getImagem() );
+                tvMensagem.setText( avaliacao.getMensagem() );
             }
             else{
                 civPerfil.setVisibility( View.GONE );

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/civ_perfil"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:civ_border_width="0dp"
+        app:civ_shadow="false" />
+
+    <TextView
+        android:id="@+id/tv_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/civ_perfil"
+        android:layout_toRightOf="@+id/civ_perfil"
+        android:paddingTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nome"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/civ_perfil"
+        android:layout_toRightOf="@+id/civ_perfil"
+        android:textColor="#888"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_1"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/tv_data"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/civ_perfil"
+        android:layout_toRightOf="@+id/civ_perfil" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_2"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_1"
+        android:layout_toRightOf="@+id/iv_estrela_1" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_3"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_2"
+        android:layout_toRightOf="@+id/iv_estrela_2" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_4"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_3"
+        android:layout_toRightOf="@+id/iv_estrela_3" />
+
+    <ImageView
+        android:id="@+id/iv_estrela_5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_estrela_1"
+        android:layout_toEndOf="@+id/iv_estrela_4"
+        android:layout_toRightOf="@+id/iv_estrela_4" />
+
+    <TextView
+        android:id="@+id/tv_avaliacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_estrela_1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/civ_perfil"
+        android:layout_toRightOf="@+id/civ_perfil"
+        android:paddingTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tv_atualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_avaliacao"
+        android:text="Atualizar"
+        android:textColor="@color/colorLink"
+        android:textSize="16sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_respostas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_avaliacao"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/civ_perfil"
+        android:layout_toRightOf="@+id/civ_perfil" />
+</RelativeLayout>

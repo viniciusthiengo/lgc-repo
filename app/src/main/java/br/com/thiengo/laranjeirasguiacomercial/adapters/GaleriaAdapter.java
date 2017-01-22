@@ -1,7 +1,6 @@
 package br.com.thiengo.laranjeirasguiacomercial.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -14,15 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mikhaellopez.circularimageview.CircularImageView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Comentario;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
 import br.com.thiengo.laranjeirasguiacomercial.fragments.ImagemFragment;
 

@@ -7,10 +7,12 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
@@ -28,9 +30,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import br.com.thiengo.laranjeirasguiacomercial.adapters.AvaliacoesAdapter;
 import br.com.thiengo.laranjeirasguiacomercial.adapters.GaleriaAdapter;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Data;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
 import br.com.thiengo.laranjeirasguiacomercial.domain.YouTubeInitializedListener;
 import br.com.thiengo.laranjeirasguiacomercial.extras.Mock;
@@ -109,6 +115,9 @@ public class ComercioActivity extends AppCompatActivity
 
         // GALERIA
         iniGaleria();
+
+        // AVALIACOES
+        iniAvaliacoes();
     }
 
     private void setYouTubeArea(){
@@ -137,6 +146,19 @@ public class ComercioActivity extends AppCompatActivity
         //GridLayoutManager layoutManager = new GridLayoutManager(this, 5);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL );
         GaleriaAdapter adapter = new GaleriaAdapter(this, imagens);
+
+        layoutManager.setAutoMeasureEnabled(true);
+        rvGaleria.setNestedScrollingEnabled(false);
+        rvGaleria.setHasFixedSize(false);
+        rvGaleria.setLayoutManager( layoutManager );
+        rvGaleria.setAdapter(adapter);
+    }
+
+    private void iniAvaliacoes(){
+        List<Avaliacao> avaliacoes = Mock.criarAvaliacoesAleatorio();
+        RecyclerView rvGaleria = (RecyclerView) findViewById(R.id.rv_avaliacao);
+        LinearLayoutManager layoutManager = new LinearLayoutManager( this );
+        AvaliacoesAdapter adapter = new AvaliacoesAdapter( this, avaliacoes );
 
         layoutManager.setAutoMeasureEnabled(true);
         rvGaleria.setNestedScrollingEnabled(false);
@@ -210,5 +232,9 @@ public class ComercioActivity extends AppCompatActivity
 
     public FragmentManager getFragManager(){
         return fragManager;
+    }
+
+    public void avaliarComercio( View view ){
+        Log.i("log", "Abrir dialog de avaliação.");
     }
 }

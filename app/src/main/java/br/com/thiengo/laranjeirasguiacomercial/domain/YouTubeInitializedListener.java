@@ -1,14 +1,9 @@
 package br.com.thiengo.laranjeirasguiacomercial.domain;
 
-import android.app.Activity;
-import android.content.Context;
-
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 
 import java.lang.ref.WeakReference;
-
-import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 
 /**
  * Created by viniciusthiengo on 18/01/17.

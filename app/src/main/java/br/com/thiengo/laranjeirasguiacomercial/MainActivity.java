@@ -1,11 +1,13 @@
 package br.com.thiengo.laranjeirasguiacomercial;
 
+import android.Manifest;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,11 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import br.com.thiengo.laranjeirasguiacomercial.extras.Util;
 import br.com.thiengo.laranjeirasguiacomercial.fragments.ComerciosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final int PERMISSAO_REQUISICAO_CODIGO = 553;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,58 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.add( R.id.content_main, fragment );
             fragmentTransaction.commit();
         }
+
+        solicitacaoPermissao();
+    }
+
+    private void solicitacaoPermissao(){
+
+        if ( !Util.ehPermitido( this, Manifest.permission.ACCESS_FINE_LOCATION ) ) {
+            boolean mostrarDialog = ActivityCompat
+                    .shouldShowRequestPermissionRationale(
+                        this,
+                        Manifest.permission.ACCESS_FINE_LOCATION );
+
+            if( mostrarDialog ){
+                permissaoDialog(
+                    getResources().getString(R.string.permissao_localizacao),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION} );
+            }
+            else{
+                ActivityCompat
+                    .requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSAO_REQUISICAO_CODIGO );
+            }
+        }
+    }
+
+    private void permissaoDialog( String message, final String[] permissions ){
+        new MaterialDialog.Builder(this)
+            .title("Permissão")
+            .content(message)
+            .positiveText("Ok")
+            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                @Override
+                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    ActivityCompat.requestPermissions(MainActivity.this, permissions, PERMISSAO_REQUISICAO_CODIGO);
+                    dialog.dismiss();
+                }
+            })
+            .negativeText("Cancelar")
+            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                @Override
+                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    dialog.dismiss();
+                }
+            })
+            .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

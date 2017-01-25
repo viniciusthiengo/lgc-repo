@@ -1,12 +1,7 @@
 package br.com.thiengo.laranjeirasguiacomercial.extras;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.InputType;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.URLSpan;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 

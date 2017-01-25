@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import java.util.List;
 import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
-import br.com.thiengo.laranjeirasguiacomercial.fragments.ImagemFragment;
 import br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment;
 
 /**

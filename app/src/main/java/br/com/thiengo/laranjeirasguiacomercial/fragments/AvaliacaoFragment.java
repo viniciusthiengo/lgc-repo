@@ -19,8 +19,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
-import br.com.thiengo.laranjeirasguiacomercial.domain.User;
 
 /**
  * Created by viniciusthiengo on 18/01/17.

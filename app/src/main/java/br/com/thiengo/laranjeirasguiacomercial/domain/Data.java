@@ -2,7 +2,6 @@ package br.com.thiengo.laranjeirasguiacomercial.domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 /**
  * Created by viniciusthiengo on 22/01/17.
@@ -47,7 +46,7 @@ public class Data implements Parcelable {
         String rotuloInicio = edicao == 0 ? "Enviado a " : "Editado a ";
         String rotuloFinal;
 
-        Log.i("Log", "Data:: "+(System.currentTimeMillis() / 1000)+" | "+data);
+        //Log.i("Log", "Data:: "+(System.currentTimeMillis() / 1000)+" | "+data);
         data = (System.currentTimeMillis() / 1000) - data;
         rotuloFinal = getDataRotuloFinal( data );
 

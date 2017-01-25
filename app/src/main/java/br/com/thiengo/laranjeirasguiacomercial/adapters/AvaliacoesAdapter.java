@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +22,7 @@ import br.com.thiengo.laranjeirasguiacomercial.ComercioActivity;
 import br.com.thiengo.laranjeirasguiacomercial.R;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Resposta;
-import br.com.thiengo.laranjeirasguiacomercial.extras.Mock;
 import br.com.thiengo.laranjeirasguiacomercial.fragments.AvaliacaoFragment;
-import br.com.thiengo.laranjeirasguiacomercial.fragments.RespostaAvaliacaoFragment;
 
 /**
  * Created by viniciusthiengo on 12/01/17.

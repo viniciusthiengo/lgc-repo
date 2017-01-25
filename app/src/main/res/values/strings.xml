@@ -50,4 +50,7 @@
         <item>@string/item_pet_shop</item>
         <item>@string/item_taxi</item>
     </string-array>
+
+    <string name="permissao_localizacao">"Precisamos de sua localização para melhor lhe apresentar os conteúdos do Guia Comercial"</string>
+    <string name="permissao_localizacao_negada">"Sem a permissão de localização não será possível lhe mostrar locais comerciais personalizados de acordo com sua posição atual."</string>
 </resources>

@@ -2,9 +2,6 @@ package br.com.thiengo.laranjeirasguiacomercial;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -42,7 +39,6 @@ public class ContatoActivity extends AppCompatActivity implements MaterialDialog
                 .title("Contato")
                 .content("Mensagem de contato enviada com sucesso. Em menos de 24hrs estaremos lhe respondendo.")
                 .positiveText("Ok")
-                .positiveColorRes( R.color.colorLink )
                 .onPositive(this)
                 .show();
     }

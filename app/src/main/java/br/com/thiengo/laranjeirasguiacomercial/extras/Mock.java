@@ -1,14 +1,13 @@
 package br.com.thiengo.laranjeirasguiacomercial.extras;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thiengo.laranjeirasguiacomercial.R;
-import br.com.thiengo.laranjeirasguiacomercial.domain.Categoria;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Avaliacao;
+import br.com.thiengo.laranjeirasguiacomercial.domain.Categoria;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Comercio;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Data;
 import br.com.thiengo.laranjeirasguiacomercial.domain.Imagem;
